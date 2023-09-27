@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message MyData {
+  string Name = 1;
+  int32 Age = 2;
+}
