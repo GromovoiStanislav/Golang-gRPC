@@ -6,6 +6,7 @@ import (
     "os"
 
     "google.golang.org/grpc"
+    
     pb "main/protos"
 )
 
@@ -19,7 +20,6 @@ func main() {
 
     // Создаем клиент
     client := pb.NewHelloServiceClient(conn)
-
 
      // Определяем имя из аргументов командной строки или используем "Hello" по умолчанию
      name := "World"

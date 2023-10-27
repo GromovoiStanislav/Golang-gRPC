@@ -8,8 +8,6 @@ import (
 
 	"google.golang.org/grpc"
 
-
-
 	pb "main/protos"
 )
 
@@ -26,12 +24,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
 	}
+
 	s := grpc.NewServer()
 	pb.RegisterHelloServiceServer(s, &server{})
 
-
-
-		fmt.Println("Server is running on port :50051")
+	fmt.Println("Server is running on port :50051")
+	
 	if err := s.Serve(listen); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
