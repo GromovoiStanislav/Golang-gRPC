@@ -6,3 +6,4 @@
 - 4 - gRPC Hello World example
 - 5 - gRPC Client stream simple example
 - 6 - gRPC Server stream simple example
+- 7 - gRPC Bidirectional stream simple example

@@ -21,7 +21,7 @@ func main() {
         log.Fatalf("Invalid input: %v", err)
     }
 
-    conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+    conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
     if err != nil {
         log.Fatalf("Failed to connect: %v", err)
     }
