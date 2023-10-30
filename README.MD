@@ -4,3 +4,4 @@
 - 2 - gRPC Hello World simple example
 - 3 - gRPC Hello World example
 - 4 - gRPC Hello World example
+- 5 - gRPC Client stream simple example

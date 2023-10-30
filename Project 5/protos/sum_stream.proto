@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+package sum_stream;
+
+service SumService {
+  rpc CalculateSum (stream SumRequest) returns (SumResponse);
+}
+
+message SumRequest {
+  int32 number = 1;
+}
+
+message SumResponse {
+  int32 result = 1;
+}
