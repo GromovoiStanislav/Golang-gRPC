@@ -8,7 +8,7 @@ go get -u google.golang.org/grpc
 
 ```
 
-generate cod
+generate code
 
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest

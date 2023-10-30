@@ -5,7 +5,6 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
 
 	pb "main/protos"
 )
@@ -35,11 +34,9 @@ func main() {
 
 	s := grpc.NewServer()
 	pb.RegisterSumServiceServer(s, &server{})
-	reflection.Register(s)
 
+	log.Println("Server is running on :50051")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
-
-	log.Println("Server is running on :50051")
 }
