@@ -59,7 +59,4 @@ func main() {
 	} else {
 		log.Println("server-trailer expected but doesn't exist in trailer")
 	}
-
-
-	
 }

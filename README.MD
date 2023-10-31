@@ -8,3 +8,4 @@
 - 6 - gRPC Server stream simple example
 - 7 - gRPC Bidirectional stream simple example
 - 8 - gRPC Sending Metadata simple example
+- 9 - gRPC Sending files simple example
