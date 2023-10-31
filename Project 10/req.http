@@ -1,0 +1,11 @@
+POST http://localhost:8081/echo
+Content-Type: application/json
+
+{
+    "msg1": "Hello world! Wrong",
+    "msg": "Hello world! Right"
+}
+
+###
+
+GET http://localhost:8081/user/3

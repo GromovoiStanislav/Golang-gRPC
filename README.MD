@@ -9,3 +9,4 @@
 - 7 - gRPC Bidirectional stream simple example
 - 8 - gRPC Sending Metadata simple example
 - 9 - gRPC Sending files simple example
+- 10 - Creating REST API based on gRPC with Gateway
