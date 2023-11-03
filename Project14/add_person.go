@@ -12,7 +12,7 @@ import (
 	"google.golang.org/protobuf/proto"
 
 	//pb "main/proto"
-	pb "github.com/GromovoiStanislav/Golang-gRPC/tree/main/Project14/proto"
+	pb "github.com/GromovoiStanislav/Golang-gRPC/Project14/proto"
 )
 
 func promptForAddress(r io.Reader) (*pb.Person, error) {
