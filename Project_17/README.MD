@@ -4,18 +4,16 @@ setup:
 
 ```
 go mod init main
-go get github.com/golang/protobuf/proto
-
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go get -u google.golang.org/grpc
 ```
 
 generate code
 
 ```
-protoc --go_out=. proto/*.proto
-or
-protoc -I=proto --go_out=. proto/addressbook.proto
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/addressbook.proto
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+protoc --go_out=invoicer --go_opt=paths=source_relative --go-grpc_out=invoicer --go-grpc_opt=paths=source_relative invoicer.proto
 ```
 
 start:

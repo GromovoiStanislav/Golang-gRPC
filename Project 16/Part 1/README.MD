@@ -5,7 +5,6 @@ setup:
 ```
 go mod init main
 go get -u google.golang.org/grpc
-
 ```
 
 generate code
