@@ -4,7 +4,8 @@ package tutorial;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "/proto";
+// option go_package = "/proto";
+option go_package = "github.com/GromovoiStanislav/Golang-gRPC/tree/main/Project14/proto";
 
 message Person {
   string name = 1;
