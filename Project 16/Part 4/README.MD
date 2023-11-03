@@ -5,6 +5,7 @@ setup:
 ```
 go mod init main
 go get -u google.golang.org/grpc
+go get github.com/jackc/pgx/v5
 ```
 
 generate code
