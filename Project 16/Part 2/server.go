@@ -41,9 +41,12 @@ func (server *UserManagementServer) Run() error {
 
 func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.NewUser) (*pb.User, error) {
 	log.Printf("Received: %v", in.GetName())
+
 	var user_id = int32(rand.Intn(100))
 	created_user := &pb.User{Name: in.GetName(), Age: in.GetAge(), Id: user_id}
+
 	server.users_list.Users = append(server.users_list.Users, created_user)
+	
 	return created_user, nil
 }
 

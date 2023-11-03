@@ -22,6 +22,7 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
+	
 	c := pb.NewUserManagementClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
