@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/GromovoiStanislav/Golang-gRPC/Project_17/invoicer";
+option go_package = "github.com/GromovoiStanislav/Golang-gRPC/Project-17/invoicer";
 
 message Amount {
   int64 amount = 1;
