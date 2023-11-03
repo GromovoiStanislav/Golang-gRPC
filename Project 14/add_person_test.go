@@ -6,12 +6,8 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	// pb "main/proto"
-	pb "github.com/GromovoiStanislav/Golang-gRPC/Project14/proto"
+	pb "main/proto"
 )
-
-
-
 
 
 func TestPromptForAddressReturnsAddress(t *testing.T) {
