@@ -19,6 +19,6 @@ protoc --go_out=invoicer --go_opt=paths=source_relative --go-grpc_out=invoicer -
 start:
 
 ```
-go run add_person.go address-book
-
+go run server.go
+go run client.go
 ```
