@@ -7,7 +7,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "github.com/GromovoiStanislav/Golang-gRPC/Project_17/invoicer"
+	pb "github.com/GromovoiStanislav/Golang-gRPC/Project-17/invoicer"
 )
 
 func main() {
