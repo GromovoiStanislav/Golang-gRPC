@@ -1,4 +1,4 @@
-## gRPC simple example
+## gRPC example (routeguide)\*
 
 setup:
 
@@ -14,12 +14,12 @@ generate code
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
-protoc --go_out=. --go-grpc_out=. protos/*.proto
+protoc --go_out=. --go-grpc_out=. routeguide/*.proto
 ```
 
 start:
 
 ```
 go run server.go
-go run client.go <string>
+go run client.go
 ```
