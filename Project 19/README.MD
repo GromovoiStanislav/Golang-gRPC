@@ -1,4 +1,4 @@
-## gRPC example (route_guide)\*
+## gRPC example with TLS (route_guide)\*
 
 setup:
 
@@ -20,6 +20,6 @@ protoc --go_out=. --go-grpc_out=. routeguide/*.proto
 start:
 
 ```
-go run server.go
-go run client.go
+go run server.go -tls=true
+go run client.go -tls=true
 ```

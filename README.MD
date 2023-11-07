@@ -17,4 +17,5 @@
 - 15 - gRPC simple example
 - 16 - gRPC examples
 - 17 - gRPC simple example
-- 18 - gRPC example (routeguide)\*
+- 18 - gRPC example (route_guide)\*
+- 19 - gRPC example with TLS (route_guide)\*
