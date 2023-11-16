@@ -36,5 +36,3 @@ Run the client:
 cd client
 go run .
 ```
-
-go run .
