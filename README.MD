@@ -23,3 +23,4 @@
 - 21 - gRPC CRUDAPI example
 - 22 - gRPC heartbeat with MongoDB
 - 23 - gRPC with TLS example
+- 24 - gRPC example
