@@ -26,3 +26,4 @@
 - 24 - gRPC example
 - 25 - gRPC with TLS Greet example
 - 26 - gRPC Hello example with using Cobra
+- 27 - gRPC with TLS example
