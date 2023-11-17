@@ -24,3 +24,4 @@
 - 22 - gRPC heartbeat with MongoDB
 - 23 - gRPC with TLS example
 - 24 - gRPC example
+- 25 - gRPC with TLS Greet example
