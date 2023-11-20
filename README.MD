@@ -28,3 +28,4 @@
 - 26 - gRPC Hello example with using Cobra
 - 27 - gRPC with TLS example
 - 28 - gRPC with TLS example of using Server side streaming\*!!!
+- 29 - gRPC Calculator Service example
