@@ -30,3 +30,4 @@
 - 28 - gRPC with TLS example of using Server side streaming\*!!!
 - 29 - gRPC Calculator Service example
 - 30 - Protocol Buffer
+- 31 - gRPC official example of Error details
