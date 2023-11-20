@@ -27,3 +27,4 @@
 - 25 - gRPC with TLS Greet example
 - 26 - gRPC Hello example with using Cobra
 - 27 - gRPC with TLS example
+- 28 - gRPC with TLS example of using Server side streaming
