@@ -31,3 +31,4 @@
 - 29 - gRPC Calculator Service example
 - 30 - Protocol Buffer
 - 31 - gRPC official example of Error details
+- 32 - gRPC official example of Error handling
