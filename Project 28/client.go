@@ -38,6 +38,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	
 	// Create a timer to cancel
 	stop := time.NewTicker(7 * time.Second)
 	// Itterate stream

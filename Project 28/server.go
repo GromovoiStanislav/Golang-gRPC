@@ -35,9 +35,8 @@ func (s *Server) Monitor(req *hardwaremonitoring.EmptyRequest, stream hardwaremo
 			hwStats, err := s.GetStats()
 			if err != nil {
 				log.Println(err.Error())
-			} else {
-
 			}
+
 			// Send the Hardware stats on the stream
 			err = stream.Send(hwStats)
 			if err != nil {
@@ -56,7 +55,6 @@ func (s *Server) GetStats() (*hardwaremonitoring.HardwareStats, error) {
 	// 	return nil, err
 	// }
 	
-	
 	// Extarcyt Memory statas
 	mem, err := memory.Get()
 	if err != nil {
@@ -68,7 +66,6 @@ func (s *Server) GetStats() (*hardwaremonitoring.HardwareStats, error) {
 	if err != nil {
 		return nil, err
 	}
-
 
 	// Create our response object
 	hwStats := &hardwaremonitoring.HardwareStats{
