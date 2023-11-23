@@ -34,3 +34,4 @@
 - 32 - gRPC official example of Error handling
 - 33 - gRPC official example of Multiplex
 - 34 - gRPC official example of Health
+- 35 - gRPC official example of Name resolving
