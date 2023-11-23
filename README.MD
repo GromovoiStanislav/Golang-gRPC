@@ -33,3 +33,4 @@
 - 31 - gRPC official example of Error details
 - 32 - gRPC official example of Error handling
 - 33 - gRPC official example of Multiplex
+- 34 - gRPC official example of Health
