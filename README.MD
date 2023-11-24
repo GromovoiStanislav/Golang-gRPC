@@ -36,3 +36,4 @@
 - 34 - gRPC official example of Health
 - 35 - gRPC official example of Name resolving\*
 - 36 - gRPC official example of loadbalancing\*
+- 37 - gRPC official example of Metadata
