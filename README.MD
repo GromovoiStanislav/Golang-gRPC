@@ -38,3 +38,4 @@
 - 36 - gRPC official example of loadbalancing\*
 - 37 - gRPC official example of Metadata
 - 38 - gRPC official example of Metadata interceptor
+- 39 - gRPC official example of Interceptor
