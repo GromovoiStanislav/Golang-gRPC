@@ -227,4 +227,4 @@ func (s *server) SomeStreamingRPC(stream pb.Service_SomeStreamingRPCServer) erro
 ## Updating metadata from a server interceptor
 
 An example for updating metadata from a server interceptor is
-available [here](../Project 38/server/main.go).
+available [here](../Project%2038/server/main.go).
