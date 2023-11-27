@@ -35,9 +35,10 @@
 - 33 - gRPC official example of Multiplex
 - 34 - gRPC official example of Health
 - 35 - gRPC official example of Name resolving\*
-- 36 - gRPC official example of loadbalancing\*
+- 36 - gRPC official example of Load balancing\*
 - 37 - gRPC official example of Metadata
 - 38 - gRPC official example of Metadata interceptor
 - 39 - gRPC official example of Interceptor
 - 40 - gRPC official example of Cancellation
 - 41 - gRPC official example of Compression
+- 42 - gRPC official example of Deadline
