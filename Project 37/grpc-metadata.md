@@ -77,7 +77,7 @@ func (s *server) SomeRPC(ctx context.Context, in *pb.SomeRequest) (*pb.SomeRespo
 
 ## Sending and receiving metadata - client side
 
-Client side metadata sending and receiving examples are available [here](../examples/features/metadata/client/main.go).
+Client side metadata sending and receiving examples are available [here](./client/main.go).
 
 ### Sending metadata
 
@@ -164,7 +164,7 @@ trailer := stream.Trailer()
 
 ## Sending and receiving metadata - server side
 
-Server side metadata sending and receiving examples are available [here](../examples/features/metadata/server/main.go).
+Server side metadata sending and receiving examples are available [here](./server/main.go).
 
 ### Receiving metadata
 
@@ -227,4 +227,4 @@ func (s *server) SomeStreamingRPC(stream pb.Service_SomeStreamingRPCServer) erro
 ## Updating metadata from a server interceptor
 
 An example for updating metadata from a server interceptor is
-available [here](../examples/features/metadata_interceptor/server/main.go).
+available [here](../Project 38/server/main.go).
