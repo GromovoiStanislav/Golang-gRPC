@@ -46,3 +46,4 @@
 - 44 - gRPC official example of Encryption mTLS
 - 45 - gRPC simple example of Bookshop service
 - 46 - gRPC simple example of Invoicer service
+- 47 - gRPC simple example of Calculator service
