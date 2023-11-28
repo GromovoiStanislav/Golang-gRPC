@@ -44,3 +44,4 @@
 - 42 - gRPC official example of Deadline
 - 43 - gRPC official example of Encryption TLS
 - 44 - gRPC official example of Encryption mTLS
+- 45 - gRPC simple example of Bookshop service
