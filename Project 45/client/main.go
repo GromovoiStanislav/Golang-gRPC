@@ -17,6 +17,7 @@ func main() {
 	defer conn.Close()
 
 	client := pb.NewInventoryClient(conn)
+	
 	bookList, err := client.GetBookList(context.Background(), &pb.GetBookListRequest{})
 	if err != nil {
 		log.Fatalf("failed to get book list: %v", err)
