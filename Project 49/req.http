@@ -1,0 +1,10 @@
+POST http://localhost:8080/v1/users
+Content-Type: application/json
+
+{
+    "name": "John",
+    "type": 1
+}
+
+###
+GET http://localhost:8080/v1/users?id=fced4753-77a7-4ca7-95e7-da02407424fd
