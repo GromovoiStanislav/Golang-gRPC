@@ -46,4 +46,8 @@ go list -f '{{.Target}}' github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-gr
 
 ```
 go run cmd/main.go
+or:
+go run ./server
+
+go run ./client
 ```
