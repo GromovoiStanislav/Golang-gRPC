@@ -6,7 +6,7 @@ import (
 )
 
 type Server struct {
-	UnimplementedProfileServiceServer
+	ProfileServiceServer
 }
 
 func (s *Server) Create(ctx context.Context, req *CreateRequest) (*CreateResponse, error) {

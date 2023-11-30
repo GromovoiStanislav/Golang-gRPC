@@ -50,3 +50,4 @@
 - 48 - gRPC simple example of Notes service
 - 49 - Creating REST API with gRPC Gateway
 - 50 - gRPC simple example of Profile service
+- 51 - gRPC simple example of Geometry service
