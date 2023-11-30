@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package profile;
+
+option go_package = "./profile";
+
+// The profile service definition.
+service ProfileService {
+  // create a profile
+  rpc Create (CreateRequest) returns (CreateResponse) {}
+}
+
+// The request message containing the user's name, is_verified, id
+message CreateRequest {
+  string name = 1;
+  bool is_verified = 2;
+  int32 id = 3;
+}
+
+// The response message containing the profile
+message CreateResponse {
+  string message = 1;
+}

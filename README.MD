@@ -49,3 +49,4 @@
 - 47 - gRPC simple example of Calculator service
 - 48 - gRPC simple example of Notes service
 - 49 - Creating REST API with gRPC Gateway
+- 50 - gRPC simple example of Profile service
