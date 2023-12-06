@@ -54,3 +54,4 @@
 - 52 - gRPC simple example of Gravatar service
 - 53 - gRPC example of Pokemon application
 - 54 - gRPC simple example of Users service
+- 55 - gRPC and Echo/v4 REST API of Products service
