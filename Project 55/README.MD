@@ -27,5 +27,5 @@ go run main.go
 ### Start the gRPC-client:
 
 ```
-go run grpc-client.go
+go run ./client/grpc-client.go
 ```
