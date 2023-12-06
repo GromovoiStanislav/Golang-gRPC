@@ -53,3 +53,4 @@
 - 51 - gRPC simple example of Geometry service
 - 52 - gRPC simple example of Gravatar service
 - 53 - gRPC example of Pokemon application
+- 54 - gRPC simple example of Users service
