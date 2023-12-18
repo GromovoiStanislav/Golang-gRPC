@@ -55,3 +55,4 @@
 - 53 - gRPC example of Pokemon application
 - 54 - gRPC simple example of Users service
 - 55 - gRPC and Echo/v4 REST API of Products service
+- 57 - gRPC simple example of Posts service
