@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 
 	posts "grpc-example/server/posts"
 )
@@ -52,6 +53,7 @@ func main() {
 	grpcServer := grpc.NewServer()
 
 	posts.RegisterPostServiceServer(grpcServer, &s)
+	reflection.Register(grpcServer)
 
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %s", err)
