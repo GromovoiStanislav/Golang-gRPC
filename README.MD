@@ -57,3 +57,4 @@
 - 55 - gRPC and Echo/v4 REST API of Products service
 - 57 - gRPC Reflection
 - 58 - gRPC Reflection
+- 59 - gRPC Currency Converter service
