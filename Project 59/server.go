@@ -48,8 +48,11 @@ func main() {
     if err != nil {
         log.Fatalf("failed to listen: %v", err)
     }
+
     s := grpc.NewServer()
+
     pb.RegisterCurrencyConverterServer(s, &server{})
+
     log.Println("gRPC server started on port 50051")
     if err := s.Serve(lis); err != nil {
         log.Fatalf("failed to serve: %v", err)

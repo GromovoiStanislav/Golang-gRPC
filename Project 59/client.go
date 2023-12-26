@@ -45,6 +45,6 @@ func convertCurrency(client pb.CurrencyConverterClient, fromCurrency, toCurrency
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Converted",amount,fromCurrency,"to",res.ConvertedAmount,fromCurrency)
+	fmt.Println("Converted", amount ,fromCurrency, "to", res.ConvertedAmount, fromCurrency)
 
 }
