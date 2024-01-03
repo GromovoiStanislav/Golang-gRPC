@@ -58,3 +58,4 @@
 - 57 - gRPC Reflection
 - 58 - gRPC Reflection
 - 59 - gRPC Currency Converter service
+- 60 - gRPC Weather service
