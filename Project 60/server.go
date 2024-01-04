@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"math/rand"
 	"net"
@@ -51,6 +52,33 @@ func (*NWeatherServer) Get(get *pb.GetTemperature, resp pb.Weather_GetServer) er
 		time.Sleep(time.Millisecond * time.Duration(Rand(100, 500)))
 	}
 	return nil
+}
+
+func (*NWeatherServer) Forecast(stream pb.Weather_ForecastServer) error  {
+	for {
+		req, err := stream.Recv()
+		if err == io.EOF {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+
+		cod := req.GetCode()
+		//date := req.GetDate()
+
+		for i := 0; i < 5; i++ {
+			if err := stream.Send(&pb.Forecast_Result{Temperature: &pb.Temperature{
+				Code:    cod,
+				Current: int32(Rand(10, 30)),
+			}}); err != nil {
+				return err
+			}
+			time.Sleep(time.Millisecond * time.Duration(Rand(100, 500)))
+		}
+	
+	}
+	
 }
 
 
