@@ -33,12 +33,8 @@ func main() {
 	client := pb.NewWeatherClient(conn)
 
 	cities := citiesWeather(client);
-	fmt.Println(cities.Cities)
-
 	for _, city := range cities.Cities {
-		fmt.Println(city.GetCode())
-		fmt.Println(city.GetName())
-		fmt.Println()
+		fmt.Printf("Cities: code: %s name: %d\n", city.GetCode(), city.GetName())
     }
 
 

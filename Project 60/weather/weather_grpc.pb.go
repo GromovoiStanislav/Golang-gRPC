@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Weather_Cities_FullMethodName   = "/Weather/cities"
-	Weather_Get_FullMethodName      = "/Weather/get"
-	Weather_Ping_FullMethodName     = "/Weather/ping"
-	Weather_Forecast_FullMethodName = "/Weather/forecast"
+	Weather_Cities_FullMethodName   = "/weather.Weather/cities"
+	Weather_Get_FullMethodName      = "/weather.Weather/get"
+	Weather_Forecast_FullMethodName = "/weather.Weather/forecast"
+	Weather_Ping_FullMethodName     = "/weather.Weather/ping"
 )
 
 // WeatherClient is the client API for Weather service.
@@ -31,9 +31,9 @@ const (
 type WeatherClient interface {
 	Cities(ctx context.Context, in *CityQuery, opts ...grpc.CallOption) (*CityQuery_Result, error)
 	Get(ctx context.Context, in *GetTemperature, opts ...grpc.CallOption) (Weather_GetClient, error)
+	Forecast(ctx context.Context, opts ...grpc.CallOption) (Weather_ForecastClient, error)
 	// Unsupported at the moment
 	Ping(ctx context.Context, opts ...grpc.CallOption) (Weather_PingClient, error)
-	Forecast(ctx context.Context, opts ...grpc.CallOption) (Weather_ForecastClient, error)
 }
 
 type weatherClient struct {
@@ -85,8 +85,39 @@ func (x *weatherGetClient) Recv() (*Temperature, error) {
 	return m, nil
 }
 
+func (c *weatherClient) Forecast(ctx context.Context, opts ...grpc.CallOption) (Weather_ForecastClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Weather_ServiceDesc.Streams[1], Weather_Forecast_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &weatherForecastClient{stream}
+	return x, nil
+}
+
+type Weather_ForecastClient interface {
+	Send(*Forecast) error
+	Recv() (*Forecast_Result, error)
+	grpc.ClientStream
+}
+
+type weatherForecastClient struct {
+	grpc.ClientStream
+}
+
+func (x *weatherForecastClient) Send(m *Forecast) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *weatherForecastClient) Recv() (*Forecast_Result, error) {
+	m := new(Forecast_Result)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *weatherClient) Ping(ctx context.Context, opts ...grpc.CallOption) (Weather_PingClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Weather_ServiceDesc.Streams[1], Weather_Ping_FullMethodName, opts...)
+	stream, err := c.cc.NewStream(ctx, &Weather_ServiceDesc.Streams[2], Weather_Ping_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -119,46 +150,15 @@ func (x *weatherPingClient) CloseAndRecv() (*Ping_Ack, error) {
 	return m, nil
 }
 
-func (c *weatherClient) Forecast(ctx context.Context, opts ...grpc.CallOption) (Weather_ForecastClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Weather_ServiceDesc.Streams[2], Weather_Forecast_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &weatherForecastClient{stream}
-	return x, nil
-}
-
-type Weather_ForecastClient interface {
-	Send(*Forecast) error
-	Recv() (*Forecast_Result, error)
-	grpc.ClientStream
-}
-
-type weatherForecastClient struct {
-	grpc.ClientStream
-}
-
-func (x *weatherForecastClient) Send(m *Forecast) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *weatherForecastClient) Recv() (*Forecast_Result, error) {
-	m := new(Forecast_Result)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 // WeatherServer is the server API for Weather service.
 // All implementations must embed UnimplementedWeatherServer
 // for forward compatibility
 type WeatherServer interface {
 	Cities(context.Context, *CityQuery) (*CityQuery_Result, error)
 	Get(*GetTemperature, Weather_GetServer) error
+	Forecast(Weather_ForecastServer) error
 	// Unsupported at the moment
 	Ping(Weather_PingServer) error
-	Forecast(Weather_ForecastServer) error
 	mustEmbedUnimplementedWeatherServer()
 }
 
@@ -172,11 +172,11 @@ func (UnimplementedWeatherServer) Cities(context.Context, *CityQuery) (*CityQuer
 func (UnimplementedWeatherServer) Get(*GetTemperature, Weather_GetServer) error {
 	return status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (UnimplementedWeatherServer) Ping(Weather_PingServer) error {
-	return status.Errorf(codes.Unimplemented, "method Ping not implemented")
-}
 func (UnimplementedWeatherServer) Forecast(Weather_ForecastServer) error {
 	return status.Errorf(codes.Unimplemented, "method Forecast not implemented")
+}
+func (UnimplementedWeatherServer) Ping(Weather_PingServer) error {
+	return status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
 func (UnimplementedWeatherServer) mustEmbedUnimplementedWeatherServer() {}
 
@@ -230,32 +230,6 @@ func (x *weatherGetServer) Send(m *Temperature) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _Weather_Ping_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(WeatherServer).Ping(&weatherPingServer{stream})
-}
-
-type Weather_PingServer interface {
-	SendAndClose(*Ping_Ack) error
-	Recv() (*Ping, error)
-	grpc.ServerStream
-}
-
-type weatherPingServer struct {
-	grpc.ServerStream
-}
-
-func (x *weatherPingServer) SendAndClose(m *Ping_Ack) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *weatherPingServer) Recv() (*Ping, error) {
-	m := new(Ping)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 func _Weather_Forecast_Handler(srv interface{}, stream grpc.ServerStream) error {
 	return srv.(WeatherServer).Forecast(&weatherForecastServer{stream})
 }
@@ -282,11 +256,37 @@ func (x *weatherForecastServer) Recv() (*Forecast, error) {
 	return m, nil
 }
 
+func _Weather_Ping_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(WeatherServer).Ping(&weatherPingServer{stream})
+}
+
+type Weather_PingServer interface {
+	SendAndClose(*Ping_Ack) error
+	Recv() (*Ping, error)
+	grpc.ServerStream
+}
+
+type weatherPingServer struct {
+	grpc.ServerStream
+}
+
+func (x *weatherPingServer) SendAndClose(m *Ping_Ack) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *weatherPingServer) Recv() (*Ping, error) {
+	m := new(Ping)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // Weather_ServiceDesc is the grpc.ServiceDesc for Weather service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Weather_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "Weather",
+	ServiceName: "weather.Weather",
 	HandlerType: (*WeatherServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -301,14 +301,14 @@ var Weather_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "ping",
-			Handler:       _Weather_Ping_Handler,
-			ClientStreams: true,
-		},
-		{
 			StreamName:    "forecast",
 			Handler:       _Weather_Forecast_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "ping",
+			Handler:       _Weather_Ping_Handler,
 			ClientStreams: true,
 		},
 	},
