@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package user;
+
+option go_package="./user";
+
+// Сервис для работы с пользователями
+service UserService {
+  // Запрос на получение информации о пользователе
+  rpc GetUser (UserRequest) returns (UserResponse) {}
+}
+
+// Запрос на получение информации о пользователе
+message UserRequest {
+  int64 id = 1;
+}
+
+// Ответ с информацией о пользователе
+message UserResponse {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
