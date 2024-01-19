@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package samples;
+
+option go_package = "/samples";
+
+
+// Объявляем перечисление для различных типов контента
+enum ContentType {
+  UNKNOWN = 0;
+  INTRODUCTION = 1;
+  TECHNICAL_OVERVIEW = 2;
+  BEST_PRACTICES = 3;
+  CONCLUSION = 4;
+}
+
+// Определяем структуру для раздела обзора
+message Section {
+  string title = 1; // Заголовок раздела
+  string content = 2; // Содержание раздела
+  ContentType type = 3; // Тип содержимого (введение, обзор и т.д.)
+}
+
+
+message TechnicalReview {
+  repeated Section sections = 1; 
+}
+
+message Environment {
+    map<string, string> variables = 1;
+}
+
+message Command {
+    oneof command_type {
+      string text = 1;
+      int32 number = 2;
+    }
+}
+
+enum Status {
+    RUNNING = 0;
+    STOPPED = 1;
+}
+
+message User {
+  string name = 1;
+  int32 age = 2;
+  string email = 3;
+} 
