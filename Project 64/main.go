@@ -3,7 +3,6 @@ package main
 
 import (
     "fmt"
-    // "io/ioutil"
     "log"
 
     "github.com/golang/protobuf/proto"
@@ -32,6 +31,11 @@ func main() {
 
     var currentStatus pb.Status = pb.Status_RUNNING
     fmt.Println(currentStatus) // RUNNING
+    fmt.Println(pb.Status_STOPPED) // STOPPED
+    fmt.Println(pb.Status_value["RUNNING"]) // 0
+    fmt.Println(pb.Status_value["STOPPED"]) // 1
+    fmt.Println(pb.Status_name[0]) // RUNNING
+    fmt.Println(pb.Status_name[1]) // STOPPED
 
 
     section1 := &pb.Section{
@@ -49,15 +53,16 @@ func main() {
     fmt.Println(section2) // title:"some title-2"  content:"some content"  type:INTRODUCTION
 
 
-    technicalReview := &pb.TechnicalReview{
-    Sections: []*pb.Section{},
-    }
+    technicalReview := &pb.TechnicalReview{}
+    // or:
     sections := []*pb.Section{}
-    sections = append(technicalReview.Sections, section1 )
-    sections = append(technicalReview.Sections, section2 )
+    sections = append(sections, section1 )
+    sections = append(sections, section2 )
     technicalReview.Sections = sections
-    fmt.Println(technicalReview) // sections:{title:"some title-2"  content:"some content"  type:INTRODUCTION}
-
+    // or:
+    // technicalReview.Sections = append(technicalReview.Sections, section1 )
+    // technicalReview.Sections = append(technicalReview.Sections, section1 )
+    fmt.Println(technicalReview) // sections:{title:"some title-1" content:"some content" type:BEST_PRACTICES} sections:{title:"some title-1" content:"some content" type:BEST_PRACTICES}
 
 
 
@@ -68,18 +73,22 @@ func main() {
         Email: "alice@example.com",
     }
 
+    fmt.Println(newUser) // name:"Alice" age:30 email:"alice@example.com"
+
     // сериализация данных
-    data, err := proto.Marshal(newUser)
+    serialized_data , err := proto.Marshal(newUser)
     if err != nil {
         log.Fatal("Marshaling error: ", err)
     }
 
     // десериализация данных
     newUser2 := &pb.User{}
-    err = proto.Unmarshal(data, newUser2)
+    err = proto.Unmarshal(serialized_data, newUser2)
     if err != nil {
         log.Fatal("Unmarshaling error: ", err)
     }
     fmt.Println(newUser2.GetName(), newUser2.GetAge(), newUser2.GetEmail()) // Alice 30 alice@example.com
+
+
 }
 
