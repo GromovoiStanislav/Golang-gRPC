@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package phonebookpb;
+
+option go_package = "src/phonebook/phonebookpb";
+
+import "google/protobuf/timestamp.proto";
+
+message Person {
+    reserved 3;
+    reserved "email";
+
+    string id = 1;
+    string name = 2;
+
+
+    enum PhoneType {
+      MOBILE = 0;
+      HOME = 1;
+      WORK = 2;
+    }
+  
+    message PhoneNumber {
+      string number = 1;
+      PhoneType type = 2;
+    }
+  
+    repeated PhoneNumber phones = 4;
+    google.protobuf.Timestamp last_updated = 5;
+    string address = 6;
+}
+
+message PhoneBook { 
+    repeated Person people = 1;
+}
