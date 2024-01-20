@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/types/known/timestamppb"
 
 	pb "protobuf-example/person"
 )
@@ -22,6 +23,7 @@ func main() {
                 {Number: "996-4321", Type: pb.Person_HOME},
                 {Number: "555-4321", Type: pb.Person_MOBILE},
         },
+        LastUpdated: timestamppb.Now(),
     }
 
     book := &pb.AddressBook{}
@@ -50,7 +52,7 @@ func main() {
                 log.Fatalln("Failed to parse address book:", err)
         }
 
-        fmt.Println(book) // people:{name:"John Doe" id:1234 email:"jdoe@example.com" phones:{number:"996-4321" type:HOME} phones:{number:"555-4321"}}
+        fmt.Println(book) // people:{name:"John Doe"  id:1234  email:"jdoe@example.com"  phones:{number:"996-4321"  type:HOME}  phones:{number:"555-4321"}  last_updated:{seconds:1705724690  nanos:206190100}}
     }
     
 }
